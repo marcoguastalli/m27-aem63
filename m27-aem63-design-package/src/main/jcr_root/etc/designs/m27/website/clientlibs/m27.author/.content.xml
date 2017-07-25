@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:ClientLibraryFolder"
+          dependencies="[granite.jquery,underscore]"
+          categories="[m27.author,cq.authoring.dialog,cq.compat.authoring.widgets]"
+          longCacheKey="${clientlib.lastModification}"/>

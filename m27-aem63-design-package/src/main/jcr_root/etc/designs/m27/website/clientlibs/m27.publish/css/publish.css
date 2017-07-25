@@ -1,0 +1,14 @@
+.iframe__base {
+    display:block;
+    margin: 0 auto;
+}
+.container--full {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1600px;
+}
+
+.container--grid {
+    max-width: 1176px;
+    margin: 0 auto;
+}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.marco27.aem.components</groupId>
+        <artifactId>m27-aem63-components</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>m27-aem63-components-package</artifactId>
+    <packaging>content-package</packaging>
+    <name>M27 AEM63 :: Components :: Package</name>
+
+    <build>
+        <plugins>
+            <!-- creates and deploys packages (http://dev.day.com/docs/en/cq/current/core/how_to/how_to_use_the_vlttool/vlt-mavenplugin.html) -->
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+                <configuration>
+                    <filterSource>src/main/META-INF/vault/filter.xml</filterSource>
+                    <!-- to prevent merging with the default filter coming from cq-parent,
+                        remove that filter here explicitly -->
+                    <filters combine.self="override"/>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- embed bundle within package -->
+        <dependency>
+            <artifactId>m27-aem63-components-core</artifactId>
+            <groupId>net.marco27.aem.components</groupId>
+            <version>${project.version}</version>
+            <type>bundle</type>
+        </dependency>
+        <!-- embed Guava as this is only provided OOTB if deployed with OAK (instead
+            of CRX2) -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <!-- JSP Taglibrary for Sling -->
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.scripting.jsp.taglib</artifactId>
+        </dependency>
+        <!-- transitive dependency of sling taglib (only given with provided scope),
+            necessary for Eclipse to instanciate the TEI -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+        </dependency>
+        <!-- JSP tag library for JSTL -->
+        <dependency>
+            <groupId>com.day.commons</groupId>
+            <artifactId>day-commons-jstl</artifactId>
+        </dependency>
+        <!-- JSP tag library for CQ (currently not available in Adobe repo, escalated
+            via http://daycare.day.com/home/netcentric/netcentric_de/partner_services/58124.html
+            <dependency> <artifactId>cq-wcm-taglib</artifactId> <groupId>com.day.cq.wcm</groupId>
+            </dependency> -->
+        <!-- necessary to validate the global.jsp -->
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.models.api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.models.impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.day.cq.wcm</groupId>
+            <artifactId>cq-wcm-webservice-support</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+</project>

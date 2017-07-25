@@ -1,0 +1,15 @@
+<p>http://adobeaemclub.com/guide-for-working-with-templates-and-call-in-sightly-aem-6-1/</p>
+
+<template data-sly-template.first>
+    This is my first Template.
+</template>
+
+<div data-sly-call="${first}"></div>
+
+<template data-sly-template.second="${@ x, y, z}">
+    Value of x = ${x}, y= ${y}, z= ${z}
+</template>
+
+<div data-sly-use.data="htltemplate.html" data-sly-call="${data.second @ x=1, y=2, z=3}"></div>
+
+<div data-sly-use.data="htltemplate.html" data-sly-call="${data.second @ y=2, z=3}"></div>

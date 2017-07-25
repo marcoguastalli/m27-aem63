@@ -1,0 +1,26 @@
+#RTEFullScreenMode {
+    z-index: 9991;
+}
+
+.cq-dialog {
+    z-index: 9990;
+}
+
+.coral-Pathbrowser-picker {
+    z-index: 9991;
+}
+
+.coral-Modal-backdrop {
+    z-index: 9992;
+}
+
+.coral-Modal {
+    z-index: 9993;
+}
+
+/* By default, tab list doesn't come with margin and appears attached to the border into the dialogues */
+.coral-TabList {
+    margin-left: 8px;
+}
+
+

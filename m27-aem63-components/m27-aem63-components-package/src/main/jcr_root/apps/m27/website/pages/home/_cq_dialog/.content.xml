@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="dialog.pageProperties.title"
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          mode="edit">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container"
+            class="cq-dialog-content-page">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    rel="cq-siteadmin-admin-properties-tabs">
+                <layout
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/layouts/fixedcolumns"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <basic jcr:primaryType="nt:unstructured"
+                           cq:showOnCreate="{Boolean}true"
+                           sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                           jcr:title="Basic"
+                           margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <title jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            cq-msm-lockable="jcr:title"
+                                            fieldLabel="dialog.pageProperties.basicTab.field.title.label"
+                                            name="./jcr:title"
+                                            renderReadOnly="{Boolean}true"
+                                            required="{Boolean}true"/>
+                                    <hideinnav jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            allowBulkEdit="{Boolean}true"
+                                            cq-msm-lockable="hideInNav"
+                                            name="./hideInNav"
+                                            renderReadOnly="{Boolean}true"
+                                            text="dialog.pageProperties.basicTab.field.hideInNav.label"
+                                            value="false"/>
+                                    <pagetitle cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            allowBulkEdit="{Boolean}true"
+                                            cq-msm-lockable="pageTitle"
+                                            fieldLabel="dialog.pageProperties.basicTab.field.pageTitle.label"
+                                            name="./pageTitle"
+                                            renderReadOnly="{Boolean}true"/>
+                                    <description jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            allowBulkEdit="{Boolean}true"
+                                            cq-msm-lockable="jcr:description"
+                                            fieldLabel="dialog.pageProperties.basicTab.field.description.label"
+                                            name="./jcr:description"
+                                            renderReadOnly="{Boolean}true"/>
+                                    <navigationtitle cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            allowBulkEdit="{Boolean}true"
+                                            cq-msm-lockable="navTitle"
+                                            fieldLabel="dialog.pageProperties.basicTab.field.navTitle.label"
+                                            fieldDescription="dialog.pageProperties.basicTab.field.navTitle.tooltip"
+                                            name="./navTitle"
+                                            renderReadOnly="{Boolean}true"/>
+                                    <tags
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideResource="true"/>
+                                    <pagename
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideResource="true"/>
+                                    <charset
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideResource="true"/>
+                                    <msmConfigEndpoint
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideResource="true"/>
+
+                                </items>
+                            </column>
+                        </items>
+                    </basic>
+                    <advanced
+                            jcr:primaryType="nt:unstructured"
+                            sling:hideResource="true"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

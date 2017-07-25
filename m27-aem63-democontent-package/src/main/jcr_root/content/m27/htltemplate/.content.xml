@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:mixinTypes="[rep:AccessControllable]"
+          jcr:primaryType="cq:Page">
+    <jcr:content
+            cq:template="/apps/m27/website/templates/home"
+            jcr:primaryType="cq:PageContent"
+            jcr:title="M27 AEM62 Demo Content Template Home"
+            sling:resourceType="m27/website/pages/home">
+        <par jcr:primaryType="nt:unstructured"
+             sling:resourceType="foundation/components/parsys">
+            <htlinfo
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="m27/website/components/htlinfo"
+                    jcr:title="HTL Info JCR Title">
+            </htlinfo>
+            <htltemplate
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="m27/website/components/par/htltemplate"
+                    jcr:title="HTL Template JCR Title">
+            </htltemplate>
+        </par>
+    </jcr:content>
+</jcr:root>

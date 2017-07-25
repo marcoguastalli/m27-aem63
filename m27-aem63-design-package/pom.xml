@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.marco27.aem</groupId>
+        <artifactId>m27-aem63</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>net.marco27.aem.design</groupId>
+    <artifactId>m27-aem63-design-package</artifactId>
+    <packaging>content-package</packaging>
+    <name>M27 AEM63 :: Design Package</name>
+    <description>Design Package for M27 AEM6.3</description>
+
+    <properties>
+        <package.root>/etc/designs/m27/website</package.root>
+        <maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+        <clientlib.lastModification>${maven.build.timestamp}</clientlib.lastModification>
+    </properties>
+
+
+    <build>
+        <plugins>
+            <!--do some filtering on the clientlibs to correctly replace the longCacheKey value-->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-resources</id>
+                        <configuration>
+                            <!-- make sure you always overwrite the one with the replaced placeholders! -->
+                            <overwrite>true</overwrite>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>insert-clientlib-cachekey</id>
+                        <!-- after the sources have been copied to package/jcr_root-->
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/package/jcr_root</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/jcr_root</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>**/.content.xml</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <directory>src/main/jcr_root</directory>
+                                    <filtering>false</filtering>
+                                    <excludes>
+                                        <exclude>**/.content.xml</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+                <configuration>
+                    <filterSource>src/main/META-INF/vault/filter.xml</filterSource>
+                    <!-- to prevent merging with the default filter coming from cq-parent,
+                        remove that filter here explicitly -->
+                    <filters combine.self="override">
+                    </filters>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.groovy.maven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <source>
+                                import java.util.Date
+                                import java.text.MessageFormat
+                                def vartimestamp = MessageFormat.format("{0,date,'{Date}'yyyy-MM-dd'T'HH:mm:ss.SSSXXX}", new Date())
+                                project.properties['buildTimeStamp'] = vartimestamp
+                            </source>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

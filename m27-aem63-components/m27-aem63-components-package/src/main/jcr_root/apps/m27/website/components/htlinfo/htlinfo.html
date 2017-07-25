@@ -1,0 +1,9 @@
+<div class="cq-placeholder" data-emptytext="HTL INFO"
+     data-sly-test.isEmpty="${!wcmmode.disabled && !properties.jcr:title}"></div>
+<div>
+    <p>${pageProperties.jcr:title}</p>
+    <p data-sly-test="${properties.jcr:title}">properties.jcr:title: ${properties.jcr:title}</p>
+    <p data-sly-test="${currentPage.pageTitle}">currentPage.pageTitle: ${currentPage.pageTitle}</p>
+    <p data-sly-test="${currentPage.path}">currentPage.path: ${currentPage.path}</p>
+    <p data-sly-test="${currentStyle}">currentStyle: ${currentStyle}</p>
+</div>
