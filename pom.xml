@@ -9,8 +9,8 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>biz.netcentric</groupId>
         <artifactId>netcentric-parent</artifactId>
+        <groupId>biz.netcentric</groupId>
         <version>1.21</version>
     </parent>
 
@@ -25,15 +25,18 @@
     <!-- override properties from parent poms with project specific values -->
     <properties>
         <!-- group name of packages which are created from submodules -->
-        <package.group>netcentric</package.group>
-        <!-- version of CQ dependencies pom (should reflect the versions of all
-            bundles currently being deployed in CQ -->
+        <package.group>net.marco27.aem</package.group>
+        <bundle.category>net.marco27.aem</bundle.category>
         <cq.dependencies.version>6.3.0</cq.dependencies.version>
         <cq.port>6300</cq.port>
         <cq.user>admin</cq.user>
         <cq.password>admin</cq.password>
-        <bundle-category>netcentric</bundle-category>
         <java.version>1.8</java.version>
+        <sling.validation.api.version>1.0.0</sling.validation.api.version>
+        <sling.validation.core.version>1.0.0</sling.validation.core.version>
+        <sling.models.validation-impl.version>1.0.0.R1785621</sling.models.validation-impl.version>
+        <commons.collections4.version>4.1</commons.collections4.version>
+        <gson.version>2.3</gson.version>
     </properties>
 
     <modules>
@@ -61,105 +64,515 @@
         </profile>
     </profiles>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>biz.netcentric.cq.maven</groupId>
-                    <artifactId>felixutil-maven-plugin</artifactId>
-                    <configuration>
-                        <includeFilters>
-                            <filter>biz.netcentric.*</filter>
-                        </includeFilters>
-                        <ignoreUnstartedBundles>true</ignoreUnstartedBundles>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencyManagement>
         <dependencies>
-            <!-- some testing dependencies used throughout the whole project -->
             <dependency>
-                <!-- this one has a dependency on hamcrest 1.3 -->
+                <groupId>com.day.commons</groupId>
+                <artifactId>day-commons-gfx</artifactId>
+                <version>2.1.28</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>2.0.1</version>
+            </dependency>
+            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.11</version>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-library</artifactId>
+                <version>1.3</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
-                <version>1.9.5</version>
+                <version>1.10.19</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>RELEASE</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.wcm</groupId>
+                <artifactId>io.wcm.testing.aem-mock</artifactId>
+                <version>2.2.2</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.adobe.aem</groupId>
+                        <artifactId>aem-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.jackrabbit.vault</groupId>
+                        <artifactId>org.apache.jackrabbit.vault</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-imaging</artifactId>
+                <version>1.0-R1534292</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.models.api</artifactId>
-                <version>1.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.models.impl</artifactId>
-                <version>1.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>biz.netcentric.cq.tools.accesscontroltool</groupId>
-                <artifactId>accesscontroltool-oakindex-package</artifactId>
+                <artifactId>org.apache.sling.servlets.resolver</artifactId>
+                <version>2.4.10</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.validation.api</artifactId>
-                <version>1.0.0.R1745482</version>
-                <scope>provided</scope>
+                <version>${sling.validation.api.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.validation.core</artifactId>
-                <version>1.0.0.R1745482</version>
+                <version>${sling.validation.core.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.models.validation-impl</artifactId>
-                <version>1.0.0.R1745482</version>
-            </dependency>
-            <!-- JSR305 annotations for nullness -->
-            <dependency>
-                <groupId>com.google.code.findbugs</groupId>
-                <artifactId>jsr305</artifactId>
-                <version>3.0.0</version>
+                <version>${sling.models.validation-impl.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.sling</groupId>
-                <artifactId>org.apache.sling.testing.sling-mock</artifactId>
-                <version>1.6.2</version>
-                <scope>test</scope>
+                <groupId>org.osgi</groupId>
+                <artifactId>osgi.core</artifactId>
+                <version>6.0.0</version>
             </dependency>
             <dependency>
-                <groupId>org.jsoup</groupId>
-                <artifactId>jsoup</artifactId>
-                <version>1.8.3</version>
+                <groupId>org.osgi</groupId>
+                <artifactId>osgi.cmpn</artifactId>
+                <version>6.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.jcr</groupId>
+                <artifactId>jcr</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.22</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <!-- some testing dependencies used in all modules -->
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-        </dependency>
-    </dependencies>
+    <build>
+        <defaultGoal>clean cq:deploy</defaultGoal>
+        <pluginManagement>
+            <plugins>
+                <!-- creates OSGi bundles -->
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>3.3.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <!-- dump SCR component definitions to the output directory, see https://issues.apache.org/jira/browse/FELIX-3324 -->
+                        <exportScr>true</exportScr>
+                        <instructions>
+                            <!-- enrich project description by build information -->
+                            <Bundle-Description>${project.description} - ${build.details}</Bundle-Description>
+                            <Bundle-Category>${bundle.category}</Bundle-Category>
+                            <!-- Use capability to enforce a certain java environment, see https://www.infoq.com/news/2011/03/osgi-43 -->
+                            <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee="JavaSE")(version&gt;=${java.version}))</Require-Capability>
+                            <!-- enable processing of default OSGI component annotations (since OSGi 5) -->
+                            <_dsannotations>*</_dsannotations>
+                            <!-- support inheritance on components -->
+                            <_dsannotations-inherit>true</_dsannotations-inherit>
+                            <!-- enable processing of default OSGI metatype annotations (since OSGi 6) -->
+                            <_metatypeannotations>*</_metatypeannotations>
+                            <!-- support processing of Felix SCR annotations through the felix.scr.bnd plugin, look at https://github.com/apache/felix/blob/trunk/tools/org.apache.felix.scr.bnd/src/main/java/org/apache/felix/scrplugin/bnd/SCRDescriptorBndPlugin.java#L60
+                                for supported options -->
+                            <_plugin>org.apache.felix.scrplugin.bnd.SCRDescriptorBndPlugin;destdir=${project.build.outputDirectory};log=error</_plugin>
+                            <!-- enable generating the manifest header for Sling Models, https://sling.apache.org/documentation/bundles/models.html#registration-of-sling-models-classes-via-bnd-plugin -->
+                            <_plugin>org.apache.sling.bnd.models.ModelsScannerPlugin;generatePackagesHeader=${sling.models.packages.header}</_plugin>
+                        </instructions>
+                    </configuration>
+                    <dependencies>
+                        <!-- https://github.com/apache/felix/tree/trunk/tools/org.apache.felix.scr.bnd, processes deprecated SCR annotations
+                            with the BND process -->
+                        <dependency>
+                            <groupId>org.apache.felix</groupId>
+                            <artifactId>org.apache.felix.scr.bnd</artifactId>
+                            <!-- don't use the newest version, since https://issues.apache.org/jira/browse/FELIX-5304 causes known
+                                regressions for at least WorkflowProcesses (compare with https://projects.netcentric.biz/browse/CQ-255) -->
+                            <version>1.5.0</version>
+                        </dependency>
+                        <!-- enable generating the manifest header for Sling Models, https://sling.apache.org/documentation/bundles/models.html#registration-of-sling-models-classes-via-bnd-plugin -->
+                        <dependency>
+                            <groupId>org.apache.sling</groupId>
+                            <artifactId>org.apache.sling.bnd.models</artifactId>
+                            <version>1.0.0</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <!-- override the default goals for the maven-bundle-plugin to prevent
+                            any OBR related operations from happening http://svn.apache.org/repos/asf/felix/releases/maven-bundle-plugin-2.4.0/doc/site/index.html -->
+                        <execution>
+                            <id>default-install</id>
+                            <goals>
+                                <goal>install</goal>
+                            </goals>
+                            <phase>none</phase>
+                        </execution>
+                        <execution>
+                            <id>default-deploy</id>
+                            <goals>
+                                <goal>deploy</goal>
+                            </goals>
+                            <phase>none</phase>
+                        </execution>
+                        <execution>
+                            <id>default-clean</id>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                            <phase>none</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- deploys OSGi bundles to Felix, http://sling.apache.org/site/sling.html -->
+                <plugin>
+                    <groupId>org.apache.sling</groupId>
+                    <artifactId>maven-sling-plugin</artifactId>
+                    <version>2.2.0</version>
+                    <configuration>
+                        <!-- use WebConsole for deployment, as this is available on all instances, gives direct feedback and doesn't require
+                            configuring a dynamic path -->
+                        <slingUrl>${cq.server}/system/console</slingUrl>
+                        <deploymentMethod>WebConsole</deploymentMethod>
+                        <user>${cq.user}</user>
+                        <password>${cq.password}</password>
+                        <failOnError>true</failOnError>
+                    </configuration>
+                </plugin>
+
+                <!-- plugin to generate Sling i18n dictionaries out of Sightly/Javascripts script and TouchUI/ClassicUI dialogs, https://projects.netcentric.biz/wiki/display/CQ/sling-i18n-maven-plugin -->
+                <plugin>
+                    <groupId>biz.netcentric.cq.maven</groupId>
+                    <artifactId>sling-i18n-maven-plugin</artifactId>
+                    <version>0.4</version>
+                </plugin>
+
+                <!-- creates and deploys CRX packages, http://dev.day.com/docs/en/cq/current/core/how_to/how_to_use_the_vlttool/vlt-mavenplugin.html -->
+                <plugin>
+                    <groupId>com.day.jcr.vault</groupId>
+                    <artifactId>content-package-maven-plugin</artifactId>
+                    <version>0.5.1</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <userId>${cq.user}</userId>
+                        <password>${cq.password}</password>
+                        <workspace>${cq.workspace}</workspace>
+                        <targetURL>${cq.server}/crx/packmgr/service.jsp</targetURL>
+                        <!-- <classesDirectory>${project.build.directory}/jspc-plugin-generated</classesDirectory> -->
+                        <useProxy>false</useProxy>
+                        <failOnError>true</failOnError>
+                        <filterSource>src/main/META-INF/vault/filter.xml</filterSource>
+                        <!-- the directory which is created by the resource phase (see resource
+                            section below), do not act on source directory to not include any undesired metadata in the package -->
+                        <builtContentDirectory>target/package/jcr_root</builtContentDirectory>
+                        <!-- <workDirectory>target/package</workDirectory> -->
+                        <group>${package.group}</group>
+                        <name>${package.name}</name>
+                        <properties>
+                            <!-- enrich description with build informations -->
+                            <description>${project.description} - ${build.details}</description>
+                            <!-- using extract instead of install to not create package snapshots for sub packages, see JCRVLT-30 -->
+                            <subPackageHandling>*;extract</subPackageHandling>
+                        </properties>
+                        <embeddedTarget>${package.root}/install</embeddedTarget>
+                        <!-- do not generate filter rules with this plugin due to lack of support by Sling IDE (https://issues.apache.org/jira/browse/SLING-6344) -->
+                        <embeddeds>
+                            <embedded>
+                                <!-- embed everything which has the same group id as this project
+                                    and is a bundle, nevertheless it only filters from the list of given dependencies. -->
+                                <groupId>${project.groupId}</groupId>
+                                <type>bundle</type>
+                            </embedded>
+                        </embeddeds>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <!-- packaging needs to be explicitly defined, since content-packages
+                                normally have WAR packaging -->
+                            <id>default-package</id>
+                            <goals>
+                                <goal>package</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- plugin to start all bundles after deployment of crx packages -->
+                <plugin>
+                    <groupId>biz.netcentric.cq.maven</groupId>
+                    <artifactId>felixutil-maven-plugin</artifactId>
+                    <version>1.0.1</version>
+                    <configuration>
+                        <user>${cq.user}</user>
+                        <password>${cq.password}</password>
+                        <baseURL>${cq.server}</baseURL>
+                        <!-- for bundles having symbolic names which matches this regexp the
+                            operation is applied -->
+                        <includeFilters>
+                            <filter>biz.netcentric.*</filter>
+                        </includeFilters>
+
+                        <!-- complete deploy has a wrong order of the packages (since one view
+                            contains multiple bundles) and maven only correctly handles the dependencies
+                            between OSGi. Therefore a complete deploy after clearing all packages leads
+                            to some packages not being started, until all packages are deployed. Maven
+                            should therefore ignore unstarted bundles by default! -->
+                        <ignoreUnstartedBundles>true</ignoreUnstartedBundles>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>biz.netcentric.maven</groupId>
+                    <artifactId>aem-rules-enforcer-maven-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <extensions>true</extensions>
+                    <executions>
+                        <!-- checks that projects are properly setup -->
+                        <execution>
+                            <id>enforce-project-setup-rules</id>
+                            <goals>
+                                <goal>enforce-project-setup-rules</goal>
+                            </goals>
+                        </execution>
+                        <!-- the rules which are specific to either bundle or content-package are configured in a profile -->
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Enable goals cq:deploy and cq:hotdeploy (https://projects.netcentric.biz/wiki/display/CQ/CQ+Build+Extensions+Plugin) -->
+                <plugin>
+                    <groupId>biz.netcentric.cq.buildext</groupId>
+                    <artifactId>cq-build-extensions-plugin</artifactId>
+                    <version>1.0.10</version>
+                    <configuration>
+                        <!-- For hotdeploy, by default go one level up for a full deployment
+                            (one level means usually the components and configurations that belong to
+                            the design) -->
+                        <fullDeployPath>..</fullDeployPath>
+                    </configuration>
+                </plugin>
+
+                <!-- determine Git commit (https://github.com/ktoso/maven-git-commit-id-plugin,
+                    to fill ${git.commit.id}) -->
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>2.2.2</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!-- true by default, controls whether the plugin will fail when no
+                            .git directory is found, when set to false the plugin will just skip execution -->
+                        <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                        <injectAllReactorProjects>true</injectAllReactorProjects>
+                        <!-- this might not work, if the parent is not equal to the working directory -->
+                        <runOnlyOnce>true</runOnlyOnce>
+                        <!-- for our standard projects the parent = reactor = pom project -->
+                        <skipPoms>false</skipPoms>
+                    </configuration>
+                </plugin>
+
+                <!-- Used to verify if the JS files can be compressed by the YUI compressor. -->
+                <plugin>
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>yuicompressor-maven-plugin</artifactId>
+                    <version>1.5.1</version><!-- the plugin version 1.5.1 uses yui compressor 2.4.7 -->
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compress</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration> <!-- According to the 'compress' method call in com.adobe.granite.ui.clientlibs.impl.JsFileBuilder -->
+                        <nomunge>true</nomunge>
+                        <preserveAllSemiColons>false</preserveAllSemiColons>
+                        <disableOptimizations>false</disableOptimizations>
+                        <outputDirectory>${project.build.outputDirectory}/yuicompressor</outputDirectory>
+                    </configuration>
+                </plugin>
+
+                <!-- Validate HTL files during build time -->
+                <plugin>
+                    <groupId>org.apache.sling</groupId>
+                    <artifactId>htl-maven-plugin</artifactId>
+                    <version>1.0.6</version>
+                    <executions>
+                        <execution>
+                            <id>validate-htl-scripts</id>
+                            <goals>
+                                <goal>validate</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirectory>${basedir}/src/main/jcr_root</sourceDirectory>
+                                <failOnWarnings>true</failOnWarnings>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- enable evaluation of JSR305 annotations with findbugs -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>3.0.4</version>
+                    <configuration>
+                        <!-- restrict to the null related checks.
+                            the overview of all bug detected is http://findbugs.sourceforge.net/bugDescriptions.html
+                            the anchors contain the bug reference id just look for the bug reference
+                            id then in the "detect" package: https://code.google.com/p/findbugs/source/browse/findbugs/src/java/edu/umd/cs/findbugs/detect/ -->
+                        <visitors>
+                            InconsistentAnnotations,NoteUnconditionalParamDerefs,FindNullDeref,FindNullDerefsInvolvingNonShortCircuitEvaluation,LoadOfKnownNullValue
+                        </visitors>
+                        <!-- not forking may lead to OOM exception (related to PermGen) -->
+                        <fork>true</fork>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>run-findbugs-fornullchecks</id>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- always register maven-bundle-plugin to be able to reference dependencies from type "bundle" from all packaging types -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+            </plugin>
+            <!-- ban maven-scr-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>ban-maven-scr-plugin</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedPlugins>
+                                    <excludes>
+                                        <exclude>org.apache.felix:maven-scr-plugin</exclude>
+                                    </excludes>
+                                    <message>The maven-scr-plugin is no longer supported (and conflicts with the execution of the manifest
+                                        goal of the maven-bundle-plugin) - please migrate to OSGi
+                                        annotations or use the BND Scr Plugin together with the maven-bunde-plugin).</message>
+                                </bannedPlugins>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <!-- this resources section does only apply to content packages -->
+        <resources>
+            <!-- copy everything what should be contained in the package to target/package -->
+            <resource>
+                <directory>src/main/jcr_root</directory>
+                <targetPath>${project.build.directory}/package/jcr_root</targetPath>
+                <excludes>
+                    <!-- exclude everything what belongs to vlt and Mac as well as WEB-INF -->
+                    <exclude>**/*.vlt</exclude>
+                    <exclude>**/*.svn</exclude>
+                    <exclude>**/*.gitignore</exclude>
+                    <exclude>**/*.DS_Store</exclude>
+                    <exclude>WEB-INF/**</exclude>
+                    <!-- don't copy META-INF since it is set in the content-package-maven-plugin
+                        configuration -->
+                    <exclude>META-INF/**</exclude>
+                    <!-- never copy any files which resulted from VLT conflicts -->
+                    <exclude>**/*.base</exclude>
+                    <exclude>**/*.mine</exclude>
+                    <exclude>**/*.theirs</exclude>
+                    <!-- TODO: we should exclude everything ending with a revision, for
+                        example .r123, but there is no usefull pattern for that http://ant.apache.org/manual/dirtasks.html#patterns -->
+                </excludes>
+            </resource>
+            <!-- allow to define package thumbnails -->
+            <resource>
+                <directory>src/main/META-INF/vault/definition</directory>
+                <targetPath>../vault-work/META-INF/vault/definition</targetPath>
+            </resource>
+            <!-- maven default -->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
 </project>

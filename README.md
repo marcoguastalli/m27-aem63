@@ -5,8 +5,8 @@ cd ~/dev/repository/git/m27-aem63-servers
 mvn cq-start
 
 = DEPLOY into AEM SERVERS
-mvn clean install -Pserver-package-deploy -Dcq.server=http://localhost:6300
-mvn clean install -Pserver-package-deploy -Dcq.server=http://localhost:6301
+mvn clean cq:deploy -Pserver-package-deploy -Dcq.server=http://localhost:6300
+mvn clean cq:deploy -Pserver-package-deploy -Dcq.server=http://localhost:6301
 
 = JSPINFO
 http://localhost:6300/editor.html/content/m27/jspinfo.html

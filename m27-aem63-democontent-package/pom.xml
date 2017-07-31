@@ -19,21 +19,36 @@
 
     <build>
         <plugins>
-            <!-- creates and deploys packages (http://dev.day.com/docs/en/cq/current/core/how_to/how_to_use_the_vlttool/vlt-mavenplugin.html) -->
             <plugin>
-                <groupId>com.day.jcr.vault</groupId>
-                <artifactId>content-package-maven-plugin</artifactId>
+                <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>default-package</id>
+                        <id>default-resources</id>
                         <configuration>
-                            <filterSource>src/main/META-INF/vault/filter.xml</filterSource>
-                            <!-- to prevent merging with the default filter coming from cq-parent,
-                                remove that filter here explicitly -->
-                            <filters combine.self="override" />
+                            <!-- make sure you always overwrite the one with the replaced placeholders! -->
+                            <overwrite>true</overwrite>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+                <configuration>
+                    <filterSource>src/main/META-INF/vault/filter.xml</filterSource>
+                    <!-- to prevent merging with the default filter coming from cq-parent,
+                        remove that filter here explicitly -->
+                    <filters combine.self="override">
+                    </filters>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>biz.netcentric.cq.maven</groupId>
+                <artifactId>felixutil-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

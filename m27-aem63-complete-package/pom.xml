@@ -16,6 +16,7 @@
     <properties>
         <!-- this is an artificial package root, because this package only consists out of packages -->
         <package.root>/apps/m27/complete</package.root>
+        <package.group>net.marco27.aem</package.group>
     </properties>
 
     <build>
@@ -24,6 +25,11 @@
                 <groupId>com.day.jcr.vault</groupId>
                 <artifactId>content-package-maven-plugin</artifactId>
                 <configuration>
+                    <filterSource>src/main/META-INF/vault/filter.xml</filterSource>
+                    <!-- to prevent merging with the default filter coming from cq-parent,
+                        remove that filter here explicitly -->
+                    <filters combine.self="override">
+                    </filters>
                     <subPackages>
                         <subPackage>
                             <!-- include every package in dependencies -->
@@ -32,16 +38,6 @@
                         </subPackage>
                     </subPackages>
                 </configuration>
-            </plugin>
-
-            <!-- checks all xml files (within view projects) for well-formedness -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>xml-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>biz.netcentric.cq.maven</groupId>
-                <artifactId>felixutil-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

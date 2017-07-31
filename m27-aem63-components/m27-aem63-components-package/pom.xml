@@ -14,7 +14,18 @@
 
     <build>
         <plugins>
-            <!-- creates and deploys packages (http://dev.day.com/docs/en/cq/current/core/how_to/how_to_use_the_vlttool/vlt-mavenplugin.html) -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-resources</id>
+                        <configuration>
+                            <!-- make sure you always overwrite the one with the replaced placeholders! -->
+                            <overwrite>true</overwrite>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.day.jcr.vault</groupId>
                 <artifactId>content-package-maven-plugin</artifactId>
@@ -22,8 +33,58 @@
                     <filterSource>src/main/META-INF/vault/filter.xml</filterSource>
                     <!-- to prevent merging with the default filter coming from cq-parent,
                         remove that filter here explicitly -->
-                    <filters combine.self="override"/>
+                    <filters combine.self="override">
+                    </filters>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>biz.netcentric.cq.maven</groupId>
+                <artifactId>felixutil-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>biz.netcentric.cq.maven</groupId>
+                <artifactId>sling-i18n-maven-plugin</artifactId>
+                <version>0.4</version>
+                <executions>
+                    <execution>
+                        <id>generate-i18n-dictionary (es,en) author</id>
+                        <configuration>
+                            <outputFolder>${basedir}/target/package/jcr_root/${package.root}/components/i18n/author</outputFolder>
+                            <languages>
+                                <language>en</language>
+                            </languages>
+                            <graniteUiParserEnable>true</graniteUiParserEnable>
+                            <graniteUiParserFileset>
+                                <directory>src/main/jcr_root</directory>
+                                <includes>
+                                    <include>**/_cq_dialog/.content.xml</include>
+                                    <include>**/includes/**/.content.xml</include>
+                                    <include>**/tabs/**/.content.xml</include>
+                                </includes>
+                            </graniteUiParserFileset>
+                        </configuration>
+                        <goals>
+                            <goal>generate-dictionary</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-i18n-dictionary (es,en) publish</id>
+                        <configuration>
+                            <outputFolder>${basedir}/target/package/jcr_root/${package.root}/components/i18n/publish</outputFolder>
+                            <languages>
+                                <language>en</language>
+                            </languages>
+                            <sightlyParserEnable>true</sightlyParserEnable>
+                        </configuration>
+                        <goals>
+                            <goal>generate-dictionary</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -33,56 +94,8 @@
         <dependency>
             <artifactId>m27-aem63-components-core</artifactId>
             <groupId>net.marco27.aem.components</groupId>
-            <version>${project.version}</version>
+            <version>1.0.0-SNAPSHOT</version>
             <type>bundle</type>
-        </dependency>
-        <!-- embed Guava as this is only provided OOTB if deployed with OAK (instead
-            of CRX2) -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <!-- JSP Taglibrary for Sling -->
-        <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.scripting.jsp.taglib</artifactId>
-        </dependency>
-        <!-- transitive dependency of sling taglib (only given with provided scope),
-            necessary for Eclipse to instanciate the TEI -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-        </dependency>
-        <!-- JSP tag library for JSTL -->
-        <dependency>
-            <groupId>com.day.commons</groupId>
-            <artifactId>day-commons-jstl</artifactId>
-        </dependency>
-        <!-- JSP tag library for CQ (currently not available in Adobe repo, escalated
-            via http://daycare.day.com/home/netcentric/netcentric_de/partner_services/58124.html
-            <dependency> <artifactId>cq-wcm-taglib</artifactId> <groupId>com.day.cq.wcm</groupId>
-            </dependency> -->
-        <!-- necessary to validate the global.jsp -->
-        <dependency>
-            <groupId>javax.jcr</groupId>
-            <artifactId>jcr</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.models.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.models.impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-webservice-support</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
