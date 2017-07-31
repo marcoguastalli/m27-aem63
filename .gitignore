@@ -6,3 +6,15 @@
 out/*
 target/
 build/
+.settings
+.classpath
+.project
+bin/
+.vlt
+.DS_Store
+.idea
+*.iml
+out
+node/
+node_modules/
+npm-debug*.*
