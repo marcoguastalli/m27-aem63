@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" 
+xmlns:cq="http://www.day.com/jcr/cq/1.0" 
+xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="wcm/core/components/policies/mappings"
+        cq:policy="m27/components/components/pages/allpages/policy_clientlibs">
+        <root
+            cq:policy="wcm/foundation/components/responsivegrid/we-retail-structure"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/core/components/policies/mapping">
+            <responsivegrid
+                cq:policy="wcm/foundation/components/responsivegrid/policy_content_page"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/core/components/policies/mapping">
+                <m27 jcr:primaryType="nt:unstructured">
+                    <components jcr:primaryType="nt:unstructured">
+                        <components jcr:primaryType="nt:unstructured">
+                            <par jcr:primaryType="nt:unstructured">
+                                <image
+                                        cq:policy="m27/components/components/par/image/policy_image_widths_allowed"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                                <carousel
+                                    cq:policy="m27/components/components/par/carousel/policy_carousel"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
+                                <basictile
+                                        cq:policy="m27/components/components/par/image/policy_image_widths_allowed"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                            </par>
+                        </components>
+                    </components>
+                </m27>
+            </responsivegrid>
+        </root>  
+    </jcr:content>
+</jcr:root>

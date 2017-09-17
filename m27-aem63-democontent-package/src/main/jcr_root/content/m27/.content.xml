@@ -6,7 +6,5 @@
         jcr:primaryType="nt:unstructured"
         jcr:title="m27">
     </jcr:content>
-    <htlinfo/>
-    <htltemplate/>
-    <jspinfo/>
+    <book/>
 </jcr:root>
