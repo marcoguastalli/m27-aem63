@@ -44,6 +44,7 @@
         <module>m27-aem63-components</module>
         <module>m27-aem63-democontent-package</module>
         <module>m27-aem63-design-package</module>
+        <module>m27-aem63-templateconfiguration</module>
     </modules>
 
     <profiles>

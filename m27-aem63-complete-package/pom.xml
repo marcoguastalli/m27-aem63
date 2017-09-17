@@ -56,6 +56,12 @@
             <version>${project.version}</version>
             <type>content-package</type>
         </dependency>
+<!--        <dependency>
+            <artifactId>m27-aem63-templateconfiguration</artifactId>
+            <groupId>net.marco27.aem.templateconfiguration</groupId>
+            <version>${project.version}</version>
+            <type>content-package</type>
+        </dependency>-->
     </dependencies>
 
 </project>
