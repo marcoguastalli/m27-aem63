@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jcr:root
-    xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    jcr:primaryType="cq:ClientLibraryFolder"
-    allowProxy="{Boolean}true"
-    categories="[m27.publish]"
-    embed="[core.wcm.components.image.v1]"
-/>
