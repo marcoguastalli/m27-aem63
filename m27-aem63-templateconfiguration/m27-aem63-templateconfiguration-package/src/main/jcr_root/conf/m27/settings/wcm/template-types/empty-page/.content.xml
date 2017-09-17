@@ -6,5 +6,5 @@
     <jcr:content
         jcr:description="Generic template for web pages"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Allianz Deutschland - Empty Page"/>
+        jcr:title="M27 Website - Empty Page"/>
 </jcr:root>
