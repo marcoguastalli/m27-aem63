@@ -1,0 +1,10 @@
+<sly data-sly-use.redirect="de.allianz.orbit.components.redirect.Redirect">
+
+	<sly data-sly-test.hasContent="${redirect.hasContent}">
+		${'This page redirects to ' @ i18n}<a href="${redirect.redirectUrl}">${redirect.titleOfRedirectTarget}</a>
+	</sly>
+
+	<sly data-sly-test="${!hasContent}">
+		${'Please define the redirect target in the advanced tab of the page properties.' @ i18n}
+	</sly>
+</sly>

@@ -1,0 +1,6 @@
+less/base.less
+css/base.css
+css/adaptations.css
+css/jquery.fancybox.css
+css/jquery.slick.css
+css/jquery.slick-theme.css

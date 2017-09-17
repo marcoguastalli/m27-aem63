@@ -1,0 +1,195 @@
+/*
+* adding proper styling for navigation flyout  
+*/
+section.o-header__flyout h6 a:link,
+section.o-header__flyout h6 a:visited, 
+section.o-header__flyout h6 a:hover,
+section.o-header__flyout h6 a:active {
+	font-style:inherit;
+	font-weight:inherit;
+	color:#fff
+}
+
+section.o-header__flyout {
+	display:none;
+}
+
+
+.a-button.u-is-large {
+    line-height: 70px;
+}
+
+.o-footer .o-footer__curtain_panel {
+    text-align: center;
+}
+
+.o-footer .o-footer__curtain_panel .a-button {
+    display: inline-block;
+}
+
+.o-footer .o-footer__links .o-footer__links-people-container img {
+    display: block;
+    margin: 0 auto;
+    z-index: 99;
+    width: auto;
+}
+
+.o-footer__bottom a {
+    color: #69707a;
+    font-family: "ProximaNova-Reg", sans-serif;
+}
+
+/**
+* properly styling the paragraph in quotes
+*/
+.a-quote p {
+    font-size: inherit;
+    line-height: inherit;
+    padding:0;
+}
+
+/* Carousel styles */
+
+.carousel-container {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.carouseltile {
+    margin: 2%;
+}
+
+.carouseltile-image-text {
+    position: relative;
+    background: #000000;
+}
+
+.carouseltile-image-text .carouseltile-image {
+    opacity: .5;
+}
+
+.carouseltile-image-text .carouseltile-image .cmp-image{
+    line-height: 0;
+}
+
+.carouseltile-image-text .carouseltile-content {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    padding: 4%;
+    color: #ffffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.carousel-prev, .carousel-next {
+    font-size: 50px;
+    cursor: pointer;
+    padding: 20px;
+    color: #414141;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.carousel-next {
+    left: auto;
+    right: 0;
+}
+
+.carousel-dots
+{
+    bottom: -25px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+}
+.carousel-dots li
+{
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+}
+.carousel-dots li button
+{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #414141;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0;
+    background-color: transparent;
+}
+.carousel-dots li button:hover,
+.carousel-dots li button:focus
+{
+    outline: none;
+}
+
+.carousel-dots li.slick-active button {
+    background: #000000;
+}
+
+/* carousel for edit mode*/
+
+.slides-to-show-2:not(.slick-initialized) > div{
+    float: left;
+    width: 50%;
+}
+
+.slides-to-show-3:not(.slick-initialized) > div{
+    float: left;
+    width: 33.33333%;
+}
+
+/* remove extra padding and margin in nested .containers */
+
+.container.u-is-fluid .container.u-is-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+.cmp-title .container.u-is-fluid {
+    padding-bottom: 0;
+}
+
+/* Prevent contact tiles and other columns to deform after edition on author*/
+
+.columns .cq-Editable-dom {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.section.cq-Editable-dom {
+    background-color: inherit;
+    padding: inherit;
+}
+
+.contacttile.cq-Editable-dom  {
+    padding: 10px;
+}

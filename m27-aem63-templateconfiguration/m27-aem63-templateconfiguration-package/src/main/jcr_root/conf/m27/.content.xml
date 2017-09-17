@@ -5,6 +5,6 @@
     cq:templateTypesOrigin="local"
     jcr:mixinTypes="[rep:AccessControllable]"
     jcr:primaryType="sling:OrderedFolder"
-    jcr:title="AZD Orbit">
+    jcr:title="M27 Website">
     <settings/>
 </jcr:root>

@@ -10,7 +10,7 @@
 
     <artifactId>m27-aem63-templateconfiguration-package</artifactId>
     <packaging>content-package</packaging>
-    <name>AZD Orbit :: Template Configuration :: Package</name>
+    <name>M27 AEM63 :: Template Configuration :: Package</name>
 
     <properties>
         <!-- determines where the bundles are embedded in the package -->
