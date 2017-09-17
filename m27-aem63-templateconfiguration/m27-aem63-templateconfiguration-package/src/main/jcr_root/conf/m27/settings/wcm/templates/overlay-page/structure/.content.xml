@@ -5,13 +5,13 @@
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
         cq:template="/conf/m27/settings/wcm/templates/overlay-page"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="m27/components/components/pages/overlay">
+        sling:resourceType="m27/website/components/pages/overlay">
         <root
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/foundation/components/responsivegrid">
             <overlay_content
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="m27/components/components/par/overlaycontent"
+                    sling:resourceType="m27/website/components/par/overlaycontent"
                     editable="{Boolean}true"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">

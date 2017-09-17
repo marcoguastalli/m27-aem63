@@ -23,7 +23,7 @@
                                     assetGroup="media"
                                     assetMimetype="image/.*"
                                     droptarget="image"
-                                    resourceType="m27/components/components/par/image"/>
+                                    resourceType="m27/website/components/par/image"/>
                             </assetToComponentMapping>
                         </cq:authoring>
                     </policy_home_page>
@@ -100,7 +100,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Carousel policy"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            components="/apps/m27/components/components/par/carouseltile">
+                            components="/apps/m27/website/components/par/carouseltile">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                             <section jcr:primaryType="nt:unstructured"/>
                         </policy_carousel>
@@ -152,7 +152,7 @@
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Social Component Container Policy"
                             sling:resourceType="wcm/core/components/policy/policy"
-                            components="[/apps/m27/components/components/par/sociallink]">
+                            components="[/apps/m27/website/components/par/sociallink]">
                             <jcr:content jcr:primaryType="nt:unstructured"/>
                         </policy_social>
                     </social>

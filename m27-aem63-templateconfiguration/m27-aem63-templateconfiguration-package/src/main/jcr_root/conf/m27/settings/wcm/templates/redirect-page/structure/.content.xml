@@ -4,5 +4,5 @@
     <jcr:content
         cq:template="/conf/m27/settings/wcm/templates/redirect-page"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="m27/components/components/pages/redirect"/>
+        sling:resourceType="m27/website/components/pages/redirect"/>
 </jcr:root>
