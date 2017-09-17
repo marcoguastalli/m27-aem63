@@ -8,17 +8,7 @@ mvn cq-start
 mvn clean cq:deploy -Dcq.server=http://localhost:6300
 mvn clean cq:deploy -Dcq.server=http://localhost:6301
 
-= JSPINFO
-http://localhost:6300/editor.html/content/m27/jspinfo.html
-http://localhost:6300/content/m27/jspinfo.html
-http://localhost:6301/content/m27/jspinfo.html
-
-= HTLINFO
-http://localhost:6300/editor.html/content/m27/htlinfo.html
-http://localhost:6300/content/m27/htlinfo.html
-http://localhost:6301/content/m27/htlinfo.html
-
-= HTLTEMPLATE
-http://localhost:6300/editor.html/content/m27/htltemplate.html
-http://localhost:6300/content/m27/htltemplate.html
-http://localhost:6301/content/m27/htltemplate.html
+= BOOK
+http://localhost:6300/editor.html/content/m27/book.html
+http://localhost:6300/content/m27/book.html
+http://localhost:6301/content/m27/book.html
