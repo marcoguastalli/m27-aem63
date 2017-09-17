@@ -7,7 +7,7 @@
             cq:template="/apps/m27/website/templates/home"
             jcr:primaryType="cq:PageContent"
             jcr:title="M27 AEM 6.3 Demo Content Template Home"
-            sling:resourceType="m27/website/pages/home">
+            sling:resourceType="m27/website/pages/content">
         <par jcr:primaryType="nt:unstructured"
              sling:resourceType="foundation/components/parsys">
             <book
