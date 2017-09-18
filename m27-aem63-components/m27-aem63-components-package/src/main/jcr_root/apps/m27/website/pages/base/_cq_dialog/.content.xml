@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Base Page Dialog"
+    sling:resourceType="granite/ui/components/shell/propertiespage"
+    mode="edit">
+    <content jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured">
+                <items
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="">
+                    <basic
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="false"/>
+                    <socialmedia
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="true"/>
+                    <thumbnail
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="true"/>
+                    <permissions
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="true"/>
+                    <cloudservices
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="true"/>
+                    <personalization
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="true"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
