@@ -6,30 +6,6 @@
         jcr:primaryType="cq:PageContent"
         sling:resourceType="m27/website/components/pages/home">
         <root jcr:primaryType="nt:unstructured">
-            <header jcr:primaryType="nt:unstructured" sling:resourceType="m27/website/components/par/header">
-            </header>
-            <responsivegrid
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="m27/website/components/par/responsivegrid"/>
-            <footer
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="m27/website/components/par/footer">
-                <contact_tile
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="m27/website/components/par/contacttile"/>
-                <contact_tile_2
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="m27/website/components/par/contacttile"/>
-                <contact_tile_3
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="m27/website/components/par/contacttile"/>
-                <links_curtain
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="m27/website/components/par/linkscurtain"/>
-                <social
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="m27/website/components/par/social"/>
-            </footer>
         </root>
     </jcr:content>
 </jcr:root>

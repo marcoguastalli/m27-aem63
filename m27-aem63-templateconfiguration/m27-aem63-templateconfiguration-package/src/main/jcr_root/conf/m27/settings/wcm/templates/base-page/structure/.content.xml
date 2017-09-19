@@ -9,24 +9,6 @@
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid">
-                <header
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="m27/website/components/par/header"
-                    editable="{Boolean}true">
-                </header>
-                <responsivegrid
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="m27/website/components/par/responsivegrid"
-                    editable="{Boolean}true"/>
-                <footer
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="m27/website/components/par/footer"
-                    editable="{Boolean}true">
-                    <social jcr:primaryType="nt:unstructured"
-                        sling:resourceType="m27/website/components/par/social"
-                        editable="{Boolean}true">
-                    </social>
-                </footer>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">

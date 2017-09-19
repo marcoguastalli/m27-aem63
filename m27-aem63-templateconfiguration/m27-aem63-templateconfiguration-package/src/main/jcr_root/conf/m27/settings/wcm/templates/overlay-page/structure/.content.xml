@@ -9,10 +9,6 @@
         <root
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/foundation/components/responsivegrid">
-            <overlay_content
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="m27/website/components/par/overlaycontent"
-                    editable="{Boolean}true"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
