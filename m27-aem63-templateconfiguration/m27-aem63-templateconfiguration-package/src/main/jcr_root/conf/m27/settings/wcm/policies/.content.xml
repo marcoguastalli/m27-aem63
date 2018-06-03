@@ -95,16 +95,6 @@
                             </plugins>
                         </policy_image_widths_allowed>
                     </image>
-                    <carousel jcr:primaryType="nt:unstructured">
-                        <policy_carousel
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Carousel policy"
-                            sling:resourceType="wcm/core/components/policy/policy"
-                            components="/apps/m27/website/components/par/carouseltile">
-                            <jcr:content jcr:primaryType="nt:unstructured"/>
-                            <section jcr:primaryType="nt:unstructured"/>
-                        </policy_carousel>
-                    </carousel>
                     <basic_tile jcr:primaryType="nt:unstructured">
                         <policy_basic_tile_widths_allowed
                             jcr:description="m27 Basic Tile Widths Allowed"
@@ -146,16 +136,6 @@
                             </plugins>
                         </policy_basic_tile_widths_allowed>
                     </basic_tile>
-                    <social jcr:primaryType="nt:unstructured">
-                        <policy_social
-                            jcr:description="Components allowed on Social Container"
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Social Component Container Policy"
-                            sling:resourceType="wcm/core/components/policy/policy"
-                            components="[/apps/m27/website/components/par/sociallink]">
-                            <jcr:content jcr:primaryType="nt:unstructured"/>
-                        </policy_social>
-                    </social>
                 </par>
             </components>
         </components>

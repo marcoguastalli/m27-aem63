@@ -8,8 +8,5 @@
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid">
-            <responsivegrid
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="m27/website/components/par/responsivegrid"/>
         </root>
 </jcr:root>
